@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Customers</title>
+	<meta name="viewport" content="width=device-width, intial-scale=1.0">
+	{% comment %} <link rel="stylesheet" href="{% static 'style.css' %}"> {% endcomment %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<nav>
+		<input type="checkbox" id="check">
+		<label for="check" class="checkbtn">
+			<i class="fa fa-bars"></i>
+		</label>
+		<label class="logo">Basic Banking System</label>
+		<ul>
+			<li><a href="home">Home</a></li>
+			<label for="btn-1" class="show"></label>
+			<li><a class="active" style="cursor:pointer;">Customers</a>
+				<input type="checkbox" id="btn-1">
+			    <ul class="dropdown" aria-label="submenu">
+					<li><a href="sendmoney">Send Money</a></li>
+					<li><a class="active" href="customers">Details</a></li>
+				</ul>
+			</li>
+			<li><a href="trans">Transections</a></li>
+		</ul>
+	</nav>
+	
+	<section class="cus_tbl">
+		
+        <label class="heading" id="cus_h">Our Basic Banking System</label><br>
+		<label class="t1" id="cus_t1">Customers Detail</label>
+		<table class="table1" id="cus1_tbl">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Name</th>
+					<th>Acc. Bal</th>
+				</tr>
+			</thead>
+			<body>
+				{% for i in accounts %}
+				<tr>
+					<td>{{i.id}}</td>
+					<td>{{i.name}}</td>
+					<td>{{i.balance}}</td>
+				</tr>
+				{% endfor %}
+			</body>
+
+		</table>
+	</section>
+	
+
+</body>
+</html>
