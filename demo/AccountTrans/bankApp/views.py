@@ -35,11 +35,42 @@ def upload(request):
     return render(request, 'home.html')  # Render the home template if GET request
 
 
-
-
-
-
 # Display all accounts.
 def accounts(request):
     accounts = Account.objects.all()
     return render(request,'accounts.html',{'accounts':accounts})
+
+
+#transactions
+def transaction(request):
+    accounts = Account.objects.all()
+
+    if request.method == 'POST':
+        from_account_id = request.POST['from_account']  #getting the id of account selected
+        to_account_id = request.POST['to_account']  #getting the id of account selected
+        amount = float(request.POST['amount'])
+        if amount <= 0:
+            messages.warning(request, 'Insufficient balance in the source account.')
+            return redirect('transaction')
+        
+        #check if the two accounts selected are the same or not
+        if from_account_id == to_account_id:
+            messages.warning(request, 'Transaction could not happen using the same account')
+            return redirect('transaction')
+        else :
+            from_account = Account.objects.get(id=from_account_id) #getting the record of the account selected using the id we saved
+            to_account = Account.objects.get(id=to_account_id)
+            
+            #check if the balance satisfied and saving the transaction
+            if from_account.balance >= amount:
+                from_account.balance -= amount
+                to_account.balance += amount
+                from_account.save()
+                to_account.save()
+                messages.success(request, 'Transaction completed successfully!')
+            else:
+                messages.warning(request, 'Insufficient balance in the source account.')
+
+            return redirect('transaction')
+
+    return render(request, 'transaction.html', {'accounts': accounts})
