@@ -37,14 +37,13 @@ def upload(request):
 
 # Display all accounts.
 def accounts(request):
-    accounts = Account.objects.all()
+    accounts = Account.objects.all().order_by('created_at')
     return render(request,'accounts.html',{'accounts':accounts})
 
 
 #transactions
 def transaction(request):
-    accounts = Account.objects.all()
-
+    accounts = Account.objects.all().order_by('created_at')
     if request.method == 'POST':
         from_account_id = request.POST['from_account']  #getting the id of account selected
         to_account_id = request.POST['to_account']  #getting the id of account selected
@@ -72,5 +71,5 @@ def transaction(request):
                 messages.warning(request, 'Insufficient balance in the source account.')
 
             return redirect('transaction')
-
+    
     return render(request, 'transaction.html', {'accounts': accounts})

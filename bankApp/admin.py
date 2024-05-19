@@ -5,4 +5,5 @@ from import_export.admin import ImportExportModelAdmin
 
 @admin.register(Account)
 class AccountAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'balance')
+    list_display = ('Identifier', 'name', 'balance', 'created_at')
+    ordering = ('created_at',)
