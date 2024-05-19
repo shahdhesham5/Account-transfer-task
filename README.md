@@ -5,8 +5,12 @@ This is a Django-based web application for a basic banking system that allows us
 ## Features
 
 - **Upload CSV Files**: Allows uploading account data in CSV format.
+  ![Upload CSV Form](images/upload_form.png)
 - **View Accounts**: Displays a list of all accounts.
+  ![View Accounts](images/view_accounts.png)
 - **Perform Transactions**: Enables transferring funds between accounts.
+  ![Perform Transactions](images/perform_transactions.png)
+
 
 ## Requirements
 
@@ -50,21 +54,13 @@ Ensure you have the following installed:
     docker-compose up --build
     ```
 
-4. **Create the database and apply migrations**:
-
-    ```sh
-        docker exec -it django_sessionsbank_backend_web bash
-        python manage.py makemigration
-        python manage.py migrate
-    ```
-
-5. **Create a superuser**:
+4. **Create a superuser**:
 
     ```sh
     docker-compose exec django_sessionsbank_backend_web python manage.py createsuperuser
     ```
 
-6. **Run the development server**:
+5. **Run the development server**:
 
     The development server should already be running from the `docker-compose up` command. You can access it at `http://localhost:8000`.
 
