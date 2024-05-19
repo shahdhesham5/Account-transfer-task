@@ -5,11 +5,11 @@ This is a Django-based web application for a basic banking system that allows us
 ## Features
 
 - **Upload CSV Files**: Allows uploading account data in CSV format.
-  ![Upload CSV Form](images/upload_form.png)
+  ![Upload CSV Form](images/upload.png)
 - **View Accounts**: Displays a list of all accounts.
-  ![View Accounts](images/view_accounts.png)
+  ![View Accounts](images/accounts.png)
 - **Perform Transactions**: Enables transferring funds between accounts.
-  ![Perform Transactions](images/perform_transactions.png)
+  ![Perform Transactions](images/transaction.png)
 
 
 ## Requirements
